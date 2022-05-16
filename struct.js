@@ -1,9 +1,10 @@
 const starts = {
-    "agree":"{AGREE_SENTENCE}",
-    "disagree":"{DISAGREE_SENTENCE}",
-    "sentence":"{SENTENCE}",
-    "essay":"{ESSAY}",
-    "elements":"{ELEMENT_COMBINATION}"
+    "agree": "{AGREE_SENTENCE}",
+    "disagree": "{DISAGREE_SENTENCE}",
+    "sentence": "{SENTENCE}",
+    "essay": "{ESSAY}",
+    "elements": "{ELEMENT_COMBINATION}",
+    "html": "{HTML}"
 }
 const structure = {
     "{SENTENCE}": [
@@ -306,5 +307,90 @@ const structure = {
         "W",
         "F",
         "A"
+    ],
+    "{HTML}": [
+        "<style>{HTMLSTYLE}</style>{HTMLDIV}"
+    ],
+    "{HTMLDIV}":[
+        "",
+        "<h1>{HTMLHEADING}</h1>{HTMLDIV}",
+        "<p>{HTMLPARAGRAPH}</p>{HTMLDIV}",
+        "<div>{HTMLDIV}</div>{HTMLDIV}",
+        "<div>{HTMLDIV}</div>{HTMLDIV}",
+        "<p>{HTMLPARAGRAPH}</p>{HTMLDIV}",
+        "<button>{HTMLBUTTON}</button>{HTMLDIV}"
+    ],
+    "{HTMLSTYLE}": [
+        "{HTMLELEMENT} {{HTMLELEMENTSTYLE}}",
+        "{HTMLELEMENT} {{HTMLELEMENTSTYLE}} {HTMLSTYLE}"
+    ],
+    "{HTMLELEMENT}": [
+        "p",
+        "div",
+        "strong",
+        "em",
+        "code",
+        "h1",
+        "h2",
+        "h3",
+        "button",
+        "span"
+    ],
+    "{HTMLELEMENTSTYLE}": [
+        "{HTMLATTRIBUTE}",
+        "{HTMLATTRIBUTE} {HTMLELEMENTSTYLE}"
+    ],
+    "{HTMLATTRIBUTE}": [
+        "font-size: {DIGIT}{DIGIT}px;",
+        "width: {DIGIT}{DIGIT}px;",
+        "height: {DIGIT}{DIGIT}px;",
+        "padding: {DIGIT}{DIGIT}px;",
+        "border: {DIGIT}px {HTMLBORDER} {COLOUR};"
+    ],
+    "{HTMLPARAGRAPH}": [
+        "{SENTENCE}",
+        "{PARAGRAPH}",
+        "{AGREE_SENTENCE}",
+        "{DISAGREE_SENTENCE}",
+        "{ESSAY}",
+        "<strong>{HTMLPARAGRAPH}</strong> {HTMLPARAGRAPH}",
+        "<em>{HTMLPARAGRAPH}</em> {HTMLPARAGRAPH}",
+        "<code>{HTMLPARAGRAPH}</code> {HTMLPARAGRAPH}",
+        "<details>{HTMLPARAGRAPH}</details> {HTMLPARAGRAPH}"
+    ],
+    "{HTMLBUTTON}": [
+        "{VERB}",
+        "{QUERY}"
+    ],
+    "{HTMLHEADING}": [
+        "{NOUN}",
+        "{SENTENCE}"
+    ],
+    "{COLOUR}": [
+        "black",
+        "blue",
+        "green",
+        "red",
+        "magenta",
+        "yellow",
+        "orange",
+        "purple"
+    ],
+    "{DIGIT}": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+    ],
+    "{HTMLBORDER}": [
+        "solid",
+        "dotted",
+        "double"
     ]
 }
