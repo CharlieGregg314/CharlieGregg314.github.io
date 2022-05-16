@@ -9,7 +9,7 @@ const structures = {
                     "it's {TRU}, and here's why; {SEN}.",
                     "someone came up to me and said to me '{SEN}'",
                     "I realised that; {SEN} And that's {POS} epic",
-                    "it's {POS} {POS} {TRU}"
+                    "it's {POS} {POS} {TRU}, {ALS} {RSN}"
                 ],
                 "{SEN}": [
                     "It is just true.",
@@ -36,7 +36,8 @@ const structures = {
                     "correct",
                     "accurate",
                     "unerring",
-                    "factually {TRU}"
+                    "factually {TRU}",
+                    "resoundingly"
                 ],
                 "{ALS}": [
                     "and",
