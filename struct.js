@@ -341,10 +341,10 @@ const structure = {
         "{HTMLATTRIBUTE} {HTMLELEMENTSTYLE}"
     ],
     "{HTMLATTRIBUTE}": [
-        "font-size: {DIGIT}{DIGIT}px;",
-        "width: {DIGIT}{DIGIT}px;",
-        "height: {DIGIT}{DIGIT}px;",
-        "padding: {DIGIT}{DIGIT}px;",
+        "font-size: {2DIGITS}px;",
+        "width: {2DIGITS}px;",
+        "height: {2DIGITS}px;",
+        "padding: {2DIGITS}px;",
         "border: {DIGIT}px {HTMLBORDER} {COLOUR};"
     ],
     "{HTMLPARAGRAPH}": [
@@ -365,6 +365,11 @@ const structure = {
     "{HTMLHEADING}": [
         "{NOUN}",
         "{SENTENCE}"
+    ],
+    "{HTMLBORDER}": [
+        "solid",
+        "dotted",
+        "double"
     ],
     "{COLOUR}": [
         "black",
@@ -388,9 +393,18 @@ const structure = {
         "8",
         "9"
     ],
-    "{HTMLBORDER}": [
-        "solid",
-        "dotted",
-        "double"
+    "{POSDIGIT}": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+    ],
+    "{2DIGITS}": [
+        "{POSDIGIT}{DIGIT}"
     ]
 }
