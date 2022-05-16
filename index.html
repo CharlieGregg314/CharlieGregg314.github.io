@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agreement is cool</title>
+    
+</head>
+<body>
+    <p id="p"></p>
+</body>
+<script>
+
+    
+
+    const reasons = [
+        "it is",
+        "I think that it's pretty cool that {SEN} But you have to believe that it's {TRU}, {ALS} {RSN}",
+        "it's just {POS} {TRU}, {ALS} {RSN}",
+        "it's {TRU}, and here's why; {SEN}.",
+        "someone came up to me and said to me '{SEN}'",
+        "I realised that; {SEN} And that's {POS} epic",
+        "it's {POS} {POS} {TRU}"
+    ]
+    const sentences = [
+        "It is just true.",
+        "The truth is {POS} {TRU} because {RSN}. {SEN}",
+        "It's {TRU} because {RSN}. {SEN}",
+        "You have to believe it because {RSN}.",
+        "I was walking down the road when suddenly I {POS} realised that {RSN}. {SEN}",
+        "After discovering this I {POS} wanted to tell you so badly that {RSN}. {SEN}",
+        "Someone asked me about this {POS} cool subject and I told them '{SEN}'. {SEN}",
+        "{SEN} {ALS} - {SEN}"
+    ]
+    const positive_words = [
+        "brilliantly",
+        "radiantly",
+        "tremendously",
+        "undeniably",
+        "positively",
+        "amazingly",
+        "inevitably {POS}",
+        "tantilyzingly"
+    ]
+    const truth_words = [
+        "true",
+        "correct",
+        "accurate",
+        "unerring",
+        "factually {TRU}"
+    ]
+    const also_words = [
+        "and",
+        "also",
+        "furthermore",
+        "moreover",
+        "in addition",
+        "which {POS} implies"
+    ]
+    const changes = {
+        "{SEN}":sentences,
+        "{RSN}":reasons,
+        "{POS}":positive_words,
+        "{TRU}":truth_words,
+        "{ALS}":also_words
+    }
+    function generate_from(pool, depth) {
+        if (depth>0) {
+            let text = pool[Math.floor(Math.random()*(pool.length-1)+1)]
+            return generate(text, depth-1)
+        } else {
+            return generate(pool[0], 0)
+        }
+    }
+    function generate(text, depth) {
+        for (const label in changes) {
+            if (Object.hasOwnProperty.call(changes, label)) {
+                while (text.includes(label)) {
+                    text = text.replace(label, generate_from(changes[label], depth))
+                }
+            }
+        }
+        return text
+    }
+    const p = document.getElementById("p")
+    const qstring = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    })
+    let depth = 10
+    if (qstring.depth) {
+        depth = Number(qstring.depth)
+    }
+    p.innerHTML = generate_from(sentences, depth)
+        </script>
+</html>
