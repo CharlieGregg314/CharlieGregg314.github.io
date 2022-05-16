@@ -318,7 +318,7 @@ const structure = {
         "<div>{HTMLDIV}</div>{HTMLDIV}",
         "<div>{HTMLDIV}</div>{HTMLDIV}",
         "<p>{HTMLPARAGRAPH}</p>{HTMLDIV}",
-        "<button>{HTMLBUTTON}</button>{HTMLDIV}",
+        "<button onclick='this.innerHTML=generate(\"{HTMLBUTTON\"+\"}\",5)'>{HTMLBUTTON}</button>{HTMLDIV}",
         "<a href='https://en.wikipedia.org/wiki/Special:Random'>{HTMLBUTTON}</a>{HTMLDIV}"
     ],
     "{HTMLSTYLE}": [
@@ -336,7 +336,8 @@ const structure = {
         "h3",
         "button",
         "span",
-        "a"
+        "a",
+        "*"
     ],
     "{HTMLELEMENTSTYLE}": [
         "{HTMLATTRIBUTE}",
