@@ -318,7 +318,8 @@ const structure = {
         "<div>{HTMLDIV}</div>{HTMLDIV}",
         "<div>{HTMLDIV}</div>{HTMLDIV}",
         "<p>{HTMLPARAGRAPH}</p>{HTMLDIV}",
-        "<button>{HTMLBUTTON}</button>{HTMLDIV}"
+        "<button>{HTMLBUTTON}</button>{HTMLDIV}",
+        "<a href='https://en.wikipedia.org/wiki/Special:Random'>{HTMLBUTTON}</a>{HTMLDIV}"
     ],
     "{HTMLSTYLE}": [
         "{HTMLELEMENT} {{HTMLELEMENTSTYLE}}",
@@ -334,7 +335,8 @@ const structure = {
         "h2",
         "h3",
         "button",
-        "span"
+        "span",
+        "a"
     ],
     "{HTMLELEMENTSTYLE}": [
         "{HTMLATTRIBUTE}",
@@ -342,8 +344,8 @@ const structure = {
     ],
     "{HTMLATTRIBUTE}": [
         "font-size: {2DIGITS}px;",
-        "width: {2DIGITS}px;",
-        "height: {2DIGITS}px;",
+        "width: {2DIGITS}%;",
+        "height: {2DIGITS}%;",
         "padding: {2DIGITS}px;",
         "border: {DIGIT}px {HTMLBORDER} {COLOUR};"
     ],
