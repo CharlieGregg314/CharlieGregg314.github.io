@@ -4,31 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agreement is cool</title>
+    <title>Textgen</title>
     <script src="struct.js"></script>
-    
 </head>
 <body>
     <p id="p"></p>
 </body>
 <script>
     function generate_response(source, depth) {
-        text = structures[source].start
-        return generate(text, depth, structures[source].structure)
+        text = starts[source]
+        return generate(text, depth)
     }
-    function generate_from(pool, depth, struct) {
+    function generate_from(pool, depth) {
         if (depth>0) {
-            let text = pool[Math.floor(Math.random()*(pool.length-1)+1)]
-            return generate(text, depth-1, struct)
+            let text = pool[Math.floor(Math.random()*(pool.length))]
+            return generate(text, depth-1)
         } else {
-            return generate(pool[0], 0, struct)
+            return generate(pool[0], 0)
         }
     }
-    function generate(text, depth, struct) {
-        for (const label in struct) {
-            if (Object.hasOwnProperty.call(struct, label)) {
+    function generate(text, depth) {
+        for (const label in structure) {
+            if (Object.hasOwnProperty.call(structure, label)) {
                 while (text.includes(label)) {
-                    text = text.replace(label, generate_from(struct[label], depth, struct))
+                    text = text.replace(label, generate_from(structure[label], depth))
                 }
             }
         }
@@ -39,9 +38,13 @@
         get: (searchParams, prop) => searchParams.get(prop),
     })
     let depth = 10
+    let type = "agree"
     if (qstring.depth) {
         depth = Number(qstring.depth)
     }
-    p.innerHTML = generate_response("agree", depth)
-</script>
+    if (qstring.type) {
+        type = qstring.type
+    }
+    p.innerHTML = generate_response(type, depth).replace(/\n/g, "<br>")
+        </script>
 </html>
