@@ -309,17 +309,37 @@ const structure = {
         "A"
     ],
     "{HTML}": [
-        "<style>{HTMLSTYLE}</style>{HTMLDIV}"
+        "<style>{HTMLSTYLE}</style><button onclick=\"{JAVASCRIPT}\">script</button>{HTMLDIV}"
     ],
     "{HTMLDIV}":[
         "",
         "<h1>{HTMLHEADING}</h1>{HTMLDIV}",
         "<p>{HTMLPARAGRAPH}</p>{HTMLDIV}",
         "<div>{HTMLDIV}</div>{HTMLDIV}",
-        "<div>{HTMLDIV}</div>{HTMLDIV}",
+        "<section>{HTMLDIV}</section>{HTMLDIV}",
+        "<article>{HTMLDIV}</article>{HTMLDIV}",
+        "<table>{HTMLTABLE}</table>{HTMLDIV}",
         "<p>{HTMLPARAGRAPH}</p>{HTMLDIV}",
+        "<ul>{HTMLLIST}</ul>{HTMLDIV}",
+        "<ol>{HTMLLIST}</ol>{HTMLDIV}",
         "<button onclick='this.innerHTML=generate(\"{HTMLBUTTON\"+\"}\",5)'>{HTMLBUTTON}</button>{HTMLDIV}",
-        "<a href='https://en.wikipedia.org/wiki/Special:Random'>{HTMLBUTTON}</a>{HTMLDIV}"
+        "<br>",
+    ],
+    "{HTMLTABLE}": [
+        "<thead><tr>{HTMLTABLEROW}</tr></thead><tbody>{HTMLTABLEBODY}</tbody>",
+        "<li>{HTMLPARAGRAPH}</li>{HTMLLIST}"
+    ],
+    "{HTMLTABLEBODY}": [
+        "<tr>{HTMLTABLEROW}</tr>",
+        "<tr>{HTMLTABLEROW}</tr>{HTMLTABLEBODY}"
+    ],
+    "{HTMLTABLEROW}": [
+        "<td>{HTMLPARAGRAPH}</td>",
+        "<td>{HTMLPARAGRAPH}</td>{HTMLTABLEROW}"
+    ],
+    "{HTMLLIST}": [
+        "<li>{HTMLPARAGRAPH}</li>",
+        "<li>{HTMLPARAGRAPH}</li>{HTMLLIST}"
     ],
     "{HTMLSTYLE}": [
         "{HTMLELEMENT} {{HTMLELEMENTSTYLE}}",
@@ -337,7 +357,15 @@ const structure = {
         "button",
         "span",
         "a",
-        "*"
+        "*",
+        "table",
+        "section",
+        "article",
+        "quote",
+        "blockquote",
+        "table",
+        "tr",
+        "td"
     ],
     "{HTMLELEMENTSTYLE}": [
         "{HTMLATTRIBUTE}",
@@ -348,18 +376,22 @@ const structure = {
         "width: {2DIGITS}%;",
         "height: {2DIGITS}%;",
         "padding: {2DIGITS}px;",
-        "border: {DIGIT}px {HTMLBORDER} {COLOUR};"
+        "margin: {2DIGITS}px;",
+        "border: {DIGIT}px {HTMLBORDER} {COLOUR};",
+        "background-color: {COLOUR};",
+        "color: {COLOUR};",
     ],
     "{HTMLPARAGRAPH}": [
-        "{SENTENCE}",
-        "{PARAGRAPH}",
-        "{AGREE_SENTENCE}",
-        "{DISAGREE_SENTENCE}",
-        "{ESSAY}",
+        "<p>{SENTENCE}</p>",
+        "<p>{PARAGRAPH}</p>",
+        "<br>",
         "<strong>{HTMLPARAGRAPH}</strong> {HTMLPARAGRAPH}",
         "<em>{HTMLPARAGRAPH}</em> {HTMLPARAGRAPH}",
         "<code>{HTMLPARAGRAPH}</code> {HTMLPARAGRAPH}",
-        "<details>{HTMLPARAGRAPH}</details> {HTMLPARAGRAPH}"
+        "<details>{HTMLPARAGRAPH}</details> {HTMLPARAGRAPH}",
+        "<quote>{HTMLPARAGRAPH}</quote>{HTMLPARAGRAPH}",
+        "<blockquote>{HTMLPARAGRAPH}</blockquote>{HTMLPARAGRAPH}",
+        "<a href='https://en.wikipedia.org/wiki/Special:Random'>{HTMLBUTTON}</a> {HTMLPARAGRAPH}"
     ],
     "{HTMLBUTTON}": [
         "{VERB}",
@@ -373,16 +405,6 @@ const structure = {
         "solid",
         "dotted",
         "double"
-    ],
-    "{COLOUR}": [
-        "black",
-        "blue",
-        "green",
-        "red",
-        "magenta",
-        "yellow",
-        "orange",
-        "purple"
     ],
     "{DIGIT}": [
         "0",
@@ -409,5 +431,72 @@ const structure = {
     ],
     "{2DIGITS}": [
         "{POSDIGIT}{DIGIT}"
+    ],
+    "{JAVASCRIPT}": [
+        "{JAVASCRIPTLINE}{JAVASCRIPTLINE}",
+        "{JAVASCRIPTLINE}{JAVASCRIPT}"
+    ],
+    "{JAVASCRIPTLINE}": [
+        "console.log({STRING});",
+        "document.body.style.backgroundColor = '{COLOUR}';",
+        "{NOUN} = {JAVASCRIPTEXPRESSION};",
+        "if ({JAVASCRIPTEXPRESSION}) {{JAVASCRIPT}} {JAVASCRIPTIF}",
+        "for (let i = 0; i < {DIGIT}; i++) {{JAVASCRIPT}}"
+    ],
+    "{JAVASCRIPTIF}": [
+        "",
+        "else if ({JAVASCRIPTEXPRESSION}) {{JAVASCRIPT}} {JAVASCRIPTIF}",
+        "else {{JAVASCRIPT}}"
+    ],
+    "{JAVASCRIPTEXPRESSION}": [
+        "{BOOLEAN}",
+        "{DIGIT}",
+        "{STRING}",
+        "Math.random()",
+        "Math.random()<0.{DIGIT}",
+        "({JAVASCRIPTEXPRESSION} {OPERATOR} {JAVASCRIPTEXPRESSION})"
+    ],
+    "{BOOLEAN}":[
+        "true",
+        "false"
+    ],
+    "{STRING}": [
+        "'{NOUN}'",
+        "'{SENTENCE}'"
+    ],
+    "{OPERATOR}": [
+        "+",
+        "==",
+        "-",
+        "/",
+        "*",
+        "%",
+        "**",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "!="
+    ],
+    "{HEX}": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+    ],
+    "{COLOUR}": [
+        "#{HEX}{HEX}{HEX}{HEX}{HEX}{HEX}"
     ]
 }
