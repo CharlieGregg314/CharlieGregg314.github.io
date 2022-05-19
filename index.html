@@ -37,7 +37,7 @@
     const qstring = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     })
-    let depth = 30
+    let depth = 20
     let type = "html"
     if (qstring.depth) {
         depth = Number(qstring.depth)
