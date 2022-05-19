@@ -45,6 +45,9 @@
     if (qstring.type) {
         type = qstring.type
     }
+    document.addEventListener("visibilitychange", function() {
+        p.innerHTML = generate_response(type, depth).replace(/\n/g, "<br>")
+    });
     p.innerHTML = generate_response(type, depth).replace(/\n/g, "<br>")
         </script>
 </html>
