@@ -150,7 +150,7 @@ add(spread_call(value,for_))}else{if(!spread_call(value,if_)){
 // no else clause?
 if(else_===undefined){return}add(spread_call(value,else_))}else{add(spread_call(value,for_))}}});return result}_PYTHASCRIPT_MODULES.add("comp.js");function zip(...values){
 // minimum length of values
-let min_length=Math.min(...comp({type:[],for_:val=>val.length,in_:values}));let zipped=[];for(i of range(min_length)){zipped.push(comp({type:[],for_:l=>l[i],in_:values}))}return zipped}_PYTHASCRIPT_MODULES.add("zip.js")
+let min_length=Math.min(...comp({type:[],for_:val=>val.length,in_:values}));let zipped=[];for(i of range(min_length)){zipped.push(comp({type:[],for_:l=>l[i],in_:values}))}return zipped}_PYTHASCRIPT_MODULES.add("zip.js");
 /**
  * [js-sha256]{@link https://github.com/emn178/js-sha256}
  *
